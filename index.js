@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const MONGODB_URL = require("./config/mongodb");
 
@@ -17,6 +18,7 @@ mongoose
   .catch(err => console.log("Error:", err));
 
 app.use(express.json()); //accecpt json format for request body
+app.use(cors()); // use cors library to allow cross origin request(ajax işin içine girince oldu bu-)
 
 app.use("/movies", moviesRoutes); //Set initial root of movies for movies router
 app.use("/actors", actorsRoutes); //Set initial root of actors for movies router
